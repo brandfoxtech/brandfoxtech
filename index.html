@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brandfox.in - Your Shopify Success Partner</title>
+    <!-- Use the Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F7F9FA; /* Very light gray/blue background */
+            color: #2D323A; /* Dark Gray text */
+            scroll-behavior: smooth;
+        }
+        /* Custom colors for Tailwind to match the minimal scheme */
+        .bg-deep-teal { background-color: #004D40; }
+        .text-deep-teal { color: #004D40; }
+        .border-deep-teal { border-color: #004D40; }
+        .focus-ring-deep-teal:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 77, 64, 0.5);
+        }
+        .bg-very-light-gray {
+            background-color: #F7F9FA;
+        }
+        /* Style for the roadmap line */
+        .roadmap-line {
+            height: 2px;
+            background-color: #CBD5E0; /* A light gray for the path */
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+        @media (max-width: 767px) {
+            .roadmap-line {
+                display: none;
+            }
+        }
+        /* Custom styling for the roadmap dots and connecting lines */
+        .roadmap-container {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .roadmap-item {
+            position: relative;
+            z-index: 10;
+        }
+
+        .roadmap-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #004D40;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .roadmap-connect {
+            height: 2px;
+            background-color: #CBD5E0;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .roadmap-dot {
+                top: auto;
+                bottom: -1rem;
+            }
+            .roadmap-connect {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-90 backdrop-blur-sm py-4">
+        <div class="container mx-auto flex justify-between items-center px-6 md:px-12">
+            <a href="#hero" class="text-2xl font-bold text-deep-teal">Brandfox.in</a>
+            <nav class="hidden md:flex space-x-8 text-gray-600">
+                <a href="#services" class="hover:text-deep-teal transition duration-300">Services</a>
+                <a href="#process" class="hover:text-deep-teal transition duration-300">Process</a>
+                <a href="#seo" class="hover:text-deep-teal transition duration-300">SEO</a>
+                <a href="#faq" class="hover:text-deep-teal transition duration-300">FAQ</a>
+                <a href="#contact" class="hover:text-deep-teal transition duration-300">Contact</a>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="fixed top-0 left-0 right-0 h-full w-full bg-white text-gray-800 z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col items-center justify-center space-y-8">
+        <a href="#services" class="text-2xl font-semibold hover:text-deep-teal transition duration-300" onclick="closeMobileMenu()">Services</a>
+        <a href="#process" class="text-2xl font-semibold hover:text-deep-teal transition duration-300" onclick="closeMobileMenu()">Process</a>
+        <a href="#seo" class="text-2xl font-semibold hover:text-deep-teal transition duration-300" onclick="closeMobileMenu()">SEO</a>
+        <a href="#faq" class="text-2xl font-semibold hover:text-deep-teal transition duration-300" onclick="closeMobileMenu()">FAQ</a>
+        <a href="#contact" class="px-8 py-3 rounded-full font-semibold text-white bg-deep-teal hover:bg-teal-700 transition duration-300" onclick="closeMobileMenu()">
+            Get a Quote
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex flex-col items-center justify-center pt-24 pb-12 text-center">
+        <div class="max-w-4xl mx-auto px-6 md:px-12">
+            <h1 class="text-5xl md:text-7xl font-light leading-tight tracking-tight mb-4 text-deep-teal">
+                Build a <span class="font-bold">Shopify Store</span> That Sells.
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto mb-10">
+                We craft beautiful, high-converting Shopify experiences designed to grow your business, not just your storefront.
+            </p>
+            <a href="#contact" class="inline-block px-10 py-4 rounded-full font-semibold text-white bg-deep-teal hover:bg-teal-700 transition duration-300 transform hover:scale-105">
+                Let's Talk About Your Project
+            </a>
+        </div>
+    </section>
+
+    <!-- Our Approach Section -->
+    <section id="services" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-4xl font-bold text-center mb-4 text-deep-teal">Our Approach</h2>
+            <p class="text-lg text-center text-gray-600 max-w-3xl mx-auto mb-12">
+                We simplify the process of building a successful online store, focusing on what matters.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <!-- Service Item 1 -->
+                <div class="text-center">
+                    <div class="text-5xl mx-auto mb-4 text-deep-teal">
+                        <svg class="h-12 w-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4s-4 4-4 8 4 8 4 8m0-16s4 4 4 8-4 8-4 8"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 12h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-2 text-gray-800">Clean Design</h3>
+                    <p class="text-gray-600">Simple, elegant layouts that are easy to navigate and make your products shine.</p>
+                </div>
+                <!-- Service Item 2 -->
+                <div class="text-center">
+                    <div class="text-5xl mx-auto mb-4 text-deep-teal">
+                        <svg class="h-12 w-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-2 text-gray-800">Performance First</h3>
+                    <p class="text-gray-600">Optimized code and fast loading speeds to improve user experience and SEO.</p>
+                </div>
+                <!-- Service Item 3 -->
+                <div class="text-center">
+                    <div class="text-5xl mx-auto mb-4 text-deep-teal">
+                        <svg class="h-12 w-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2-3 .895-3 2S10.343 20 12 20c1.657 0 3-.895 3-2s-1.343-2-3-2-3-.895-3-2s1.343-2 3-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-2 text-gray-800">Conversion Focused</h3>
+                    <p class="text-gray-600">Strategic layouts and clear calls to action that guide customers to a purchase.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Process Section -->
+    <section id="process" class="py-16 md:py-24">
+        <div class="container mx-auto px-6 md:px-12 text-center">
+            <h2 class="text-4xl font-bold mb-4 text-deep-teal">Our Simple Process</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
+                From initial idea to a live, selling store, we handle every step with care.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
+                <div class="bg-deep-teal p-8 rounded-lg shadow-lg">
+                    <span class="block text-4xl font-bold mb-2">1.</span>
+                    <h3 class="text-2xl font-semibold mb-2">Discovery</h3>
+                    <p class="text-gray-300">We listen to your vision, goals, and brand to create a tailored strategy.</p>
+                </div>
+                <div class="bg-deep-teal p-8 rounded-lg shadow-lg">
+                    <span class="block text-4xl font-bold mb-2">2.</span>
+                    <h3 class="text-2xl font-semibold mb-2">Design & Build</h3>
+                    <p class="text-gray-300">Our team builds a beautiful, responsive, and high-performing store from scratch.</p>
+                </div>
+                <div class="bg-deep-teal p-8 rounded-lg shadow-lg">
+                    <span class="block text-4xl font-bold mb-2">3.</span>
+                    <h3 class="text-2xl font-semibold mb-2">Launch & Grow</h3>
+                    <p class="text-gray-300">We handle the launch and provide ongoing support to help you scale your business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO Section -->
+    <section id="seo" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6 md:px-12 text-center">
+            <h2 class="text-4xl font-bold mb-4 text-deep-teal">SEO for Shopify</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
+                A beautiful store is great, but a visible store is better. We optimize your store's foundation for search engines.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="text-left">
+                    <h3 class="text-2xl font-semibold mb-2 text-gray-800">Technical Foundation</h3>
+                    <p class="text-gray-600">We ensure your store has a clean URL structure, fast loading times, and mobile responsiveness—key ranking factors for Google.</p>
+                </div>
+                <div class="text-left">
+                    <h3 class="text-2xl font-semibold mb-2 text-gray-800">On-Page Optimization</h3>
+                    <p class="text-gray-600">We help you craft compelling product descriptions, meta titles, and image alt tags to attract organic traffic and improve your search rankings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section (Color scheme updated) -->
+    <section id="portfolio" class="py-16 md:py-24 bg-very-light-gray">
+        <div class="container mx-auto px-6 md:px-12 text-center">
+            <h2 class="text-4xl font-bold mb-4 text-deep-teal">Trusted by Ambitious Brands</h2>
+            <p class="text-lg font-light max-w-2xl mx-auto mb-12 text-gray-600">
+                Our results speak for themselves. We build stores that deliver real value.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-deep-teal text-white rounded-lg p-8">
+                    <p class="text-lg italic mb-4 text-gray-200">"Brandfox completely transformed our online presence. The new design is stunning, and the seamless user experience has significantly boosted our sales."</p>
+                    <p class="font-bold text-gray-50">- Zevar.com</p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-deep-teal text-white rounded-lg p-8">
+                    <p class="text-lg italic mb-4 text-gray-200">"Their team truly understood our brand vision. The custom Shopify store they built is not just beautiful, but also incredibly fast and easy for our customers to navigate."</p>
+                    <p class="font-bold text-gray-50">- Nakhreli.com</p>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="bg-deep-teal text-white rounded-lg p-8">
+                    <p class="text-lg italic mb-4 text-gray-200">"We needed a solution that could handle a high volume of traffic and complex product listings. Brandfox delivered a robust and high-performing store that exceeded our expectations."</p>
+                    <p class="font-bold text-gray-50">- Raipurdeal.com</p>
+                </div>
+            </div>
+            <div class="mt-8">
+                <p class="text-2xl font-bold text-gray-800">Also trusted by:</p>
+                <div class="flex flex-wrap justify-center mt-4 space-x-4 md:space-x-8 text-xl text-deep-teal">
+                    <a href="https://zevar.com" target="_blank" class="hover:text-gray-600 transition duration-300">Zevar.com</a>
+                    <a href="https://nakhreli.com" target="_blank" class="hover:text-gray-600 transition duration-300">Nakhreli.com</a>
+                    <a href="https://raipurdeal.com" target="_blank" class="hover:text-gray-600 transition duration-300">Raipurdeal.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section (Color scheme updated) -->
+    <section id="faq" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6 md:px-12 text-center">
+            <h2 class="text-4xl font-bold mb-4 text-deep-teal">Frequently Asked Questions</h2>
+            <div class="max-w-4xl mx-auto space-y-6 text-left">
+                <!-- FAQ Item 1 -->
+                <div class="bg-very-light-gray p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">How long does a typical project take?</h3>
+                    <p class="text-gray-600">A standard Shopify store design project typically takes 4-6 weeks from discovery to launch, depending on the complexity and scope.</p>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="bg-very-light-gray p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">What is the cost of your services?</h3>
+                    <p class="text-gray-600">Since every project is unique, we provide custom quotes based on your specific needs. Please fill out our contact form for a free estimate!</p>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="bg-very-light-gray p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Do you provide ongoing support after launch?</h3>
+                    <p class="text-gray-600">Yes! We offer various maintenance and support packages to help you keep your store updated and running smoothly after it goes live.</p>
+                </div>
+                <!-- FAQ Item 4 -->
+                <div class="bg-very-light-gray p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Can you help with app integrations and custom features?</h3>
+                    <p class="text-gray-600">Absolutely. We specialize in custom Shopify app integrations and building bespoke features to meet your specific business needs and improve your store's functionality.</p>
+                </div>
+                <!-- FAQ Item 5 -->
+                <div class="bg-very-light-gray p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">What kind of maintenance packages do you offer?</h3>
+                    <p class="text-gray-600">Our maintenance packages can be customized to your needs, including security updates, bug fixes, performance monitoring, and content updates to keep your store at its best.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Section: Your Store 2.0 Journey (Roadmap style) -->
+    <section id="journey" class="py-16 md:py-24">
+        <div class="container mx-auto px-6 md:px-12 text-center">
+            <h2 class="text-4xl font-bold mb-4 text-deep-teal">Your Store 2.0 Journey</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
+                We'll guide you through a seamless re-launch, empowering both you and your customers.
+            </p>
+            <div class="relative roadmap-container">
+                <!-- Horizontal Line for Desktop -->
+                <div class="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-deep-teal transform -translate-y-1/2"></div>
+                
+                <div class="flex flex-col md:flex-row justify-around items-center">
+                    <!-- Step 1: Strategy & Planning -->
+                    <div class="roadmap-item flex flex-col items-center mb-12 md:mb-0">
+                        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-deep-teal transform transition-transform duration-300 hover:scale-110">
+                            <circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="2"/>
+                            <path d="M50 82V50L30 65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="50" cy="50" r="15" fill="currentColor"/>
+                        </svg>
+                        <h3 class="text-2xl font-semibold mt-4 mb-2 text-gray-800">Strategy & Planning</h3>
+                        <p class="text-gray-600 max-w-xs">We analyze your brand, customers, and data to craft a clear roadmap for success.</p>
+                    </div>
+
+                    <!-- Vertical Line for Mobile -->
+                    <div class="md:hidden h-20 w-1 bg-deep-teal"></div>
+                    
+                    <!-- Step 2: Build & Migrate -->
+                    <div class="roadmap-item flex flex-col items-center mb-12 md:mb-0">
+                        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-deep-teal transform transition-transform duration-300 hover:scale-110">
+                            <rect x="10" y="30" width="80" height="60" rx="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M50 18V30" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M40 25L50 15L60 25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="30" cy="50" r="3" fill="currentColor"/>
+                            <circle cx="50" cy="50" r="3" fill="currentColor"/>
+                            <circle cx="70" cy="50" r="3" fill="currentColor"/>
+                        </svg>
+                        <h3 class="text-2xl font-semibold mt-4 mb-2 text-gray-800">Build & Migrate</h3>
+                        <p class="text-gray-600 max-w-xs">We build a high-performing store and ensure a smooth migration with zero data loss or downtime.</p>
+                    </div>
+
+                    <!-- Vertical Line for Mobile -->
+                    <div class="md:hidden h-20 w-1 bg-deep-teal"></div>
+
+                    <!-- Step 3: Launch & Optimize -->
+                    <div class="roadmap-item flex flex-col items-center">
+                        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-deep-teal transform transition-transform duration-300 hover:scale-110">
+                            <path d="M30 40L45 55L75 25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="10" y="10" width="80" height="80" rx="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M50 90V60" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M50 90L40 80" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M50 90L60 80" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3 class="text-2xl font-semibold mt-4 mb-2 text-gray-800">Launch & Optimize</h3>
+                        <p class="text-gray-600 max-w-xs">We push the new store live and provide a growth plan to ensure your success continues long after launch.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA & Contact Form Section (Color scheme updated) -->
+    <section id="contact" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6 md:px-12 text-center">
+            <h2 class="text-4xl font-bold mb-4 text-deep-teal">Ready to Grow Your Store?</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
+                Let's discuss how we can help you achieve your business goals. Fill out the form below to get started.
+            </p>
+            <div class="max-w-xl mx-auto bg-deep-teal p-8 rounded-lg shadow-lg">
+                <form id="contact-form" class="space-y-6 text-white">
+                    <div>
+                        <input type="text" id="name" name="name" placeholder="Your Name" class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white transition duration-300 text-gray-900" required>
+                    </div>
+                    <div>
+                        <input type="email" id="email" name="email" placeholder="Your Email" class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white transition duration-300 text-gray-900" required>
+                    </div>
+                    <div>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell us about your project..." class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white transition duration-300 text-gray-900" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full px-8 py-4 rounded-full font-semibold text-deep-teal bg-white hover:bg-gray-200 transition duration-300 transform hover:scale-105">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto text-center px-6 md:px-12">
+            <p class="text-gray-400">&copy; 2025 Brandfox.in. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Toggle mobile menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('-translate-x-full');
+            mobileMenu.classList.add('translate-x-0');
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('translate-x-0');
+            mobileMenu.classList.add('-translate-x-full');
+        }
+
+        mobileMenuButton.addEventListener('click', openMobileMenu);
+    </script>
+</body>
+</html>
