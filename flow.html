@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zevar.com Interactive Operational Workflow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals with Gold Accents -->
+    <!-- Application Structure Plan: The application is re-architected to function as a visual, interactive infographic. The main content is split into two columns: a left-hand column for high-level data visualization and a right-hand column for the detailed workflow. The workflow on the right is presented as a series of connected, interactive cards, using CSS to create visual "arrow" connectors between phases. This structure was chosen to make the workflow's linear progression immediately clear to the user. The left column provides context with a main dashboard chart and a navigation pane. This design allows users to both see the big picture and drill down into specific steps, fulfilling the request for more interactivity, infographics, and a clear "steps" flow. -->
+    <!-- Visualization & Content Choices: The workflow is now a visual "path" using a grid layout and stylized HTML/CSS arrows, directly addressing the "steps arrow" request. A doughnut chart provides the high-level overview. A new bar chart has been added to show the distribution of workflow tasks, serving as a second infographic. Emojis (e.g., 📸, 📢, 📦, 🚀) are integrated into headings and list items to enhance scannability and visual appeal. All charts use Chart.js, and the layout is fully responsive with Tailwind CSS. The interaction is a mix of smooth scrolling via navigation and visual cues from the infographic layout. This design makes the complex workflow more digestible and engaging. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8;
+            color: #4A4A4A;
+        }
+        .nav-link {
+            transition: color 0.3s, border-left-color 0.3s;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #92775E;
+            border-left-color: #C7A17A;
+        }
+        .phase-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .phase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid #DAC0A3;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: auto;
+            max-height: 400px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <main class="container mx-auto px-6 py-12 grid lg:grid-cols-3 gap-12">
+        <aside class="lg:col-span-1 sticky top-12 h-fit space-y-8">
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Zevar.com Workflow 💎</h2>
+                <p class="text-sm text-gray-600 mb-6">This interactive infographic visualizes our entire operational flow, from products to delivery and beyond. Explore the interconnected phases below.</p>
+                <div class="space-y-2">
+                    <div class="chart-container">
+                        <canvas id="workflowChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                 <h3 class="text-xl font-bold text-gray-800 mb-4">Task Breakdown 📊</h3>
+                 <div class="chart-container !max-h-[200px]">
+                    <canvas id="taskBreakdownChart"></canvas>
+                 </div>
+            </div>
+
+            <nav class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Phases</h3>
+                <div class="flex flex-col space-y-2">
+                    <a href="#phase1" class="nav-link text-gray-600 border-l-4 border-transparent pl-4 py-2">Phase 1: Products & Content 📸</a>
+                    <a href="#phase2" class="nav-link text-gray-600 border-l-4 border-transparent pl-4 py-2">Phase 2: Marketing & Engagement 📢</a>
+                    <a href="#phase3" class="nav-link text-gray-600 border-l-4 border-transparent pl-4 py-2">Phase 3: Order Fulfillment 📦</a>
+                    <a href="#phase4" class="nav-link text-gray-600 border-l-4 border-transparent pl-4 py-2">Phase 4: Continuous Improvement 🚀</a>
+                </div>
+            </nav>
+        </aside>
+
+        <section class="lg:col-span-2">
+            <h1 class="text-4xl font-bold text-gray-800 text-center mb-12 lg:hidden">Zevar.com Workflow 💎</h1>
+
+            <div class="flex flex-col items-center space-y-6">
+                <div id="phase1" class="w-full">
+                    <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Phase 1: Product Acquisition & Content 📸</h3>
+                        <p class="text-sm text-gray-600 mb-6">This initial phase is all about sourcing our beautiful jewelry and preparing it for our customers, from vendor coordination to creating high-quality visuals.</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>**📸 Photography & Updates:** Get new product info and images from vendors or conduct in-house shoots.</li>
+                            <li>**📁 Data Management:** Organize and store all product assets (photos, descriptions, SKUs).</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="arrow-down my-4"></div>
+
+                <div id="phase2" class="w-full">
+                    <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Phase 2: Marketing & Customer Engagement 📢</h3>
+                        <p class="text-sm text-gray-600 mb-6">Once products are ready, we focus on building our community. This phase covers updating our website, executing targeted social media campaigns, and maintaining a constant, helpful dialogue.</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>**💻 Website & Socials:** Update the website with new products and run targeted ad campaigns.</li>
+                            <li>**🗣️ Customer Support:** Actively monitor and respond to inquiries on social media and support channels.</li>
+                            <li>**💌 Newsletters:** Send regular email newsletters with new arrivals and special offers.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="arrow-down my-4"></div>
+
+                <div id="phase3" class="w-full">
+                    <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Phase 3: Order Processing & Fulfillment 📦</h3>
+                        <p class="text-sm text-gray-600 mb-6">This is the core operational phase where sales are converted into happy customers. It involves managing orders through our CRM, coordinating with vendors, and automating shipping updates.</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>**🛒 Order Management:** All orders automatically sync to our central CRM system.</li>
+                            <li>**🤝 Vendor Coordination:** The CRM notifies vendors of new orders and shipping deadlines.</li>
+                            <li>**🚚 Shipping & Updates:** Automated tracking and notifications are sent to customers.</li>
+                            <li>**🔄 Exception Management:** Handle returns, refunds, and cancellations smoothly through the CRM.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="arrow-down my-4"></div>
+
+                <div id="phase4" class="w-full">
+                    <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Phase 4: Continuous Improvement 🚀</h3>
+                        <p class="text-sm text-gray-600 mb-6">Our work doesn't stop after a delivery. This final, ongoing phase is about learning and evolving. We regularly review our systems and explore new technologies to enhance the customer experience.</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>**📈 System Development:** Regularly review and update our CRM, website, and automation tools.</li>
+                            <li>**💡 Innovation:** Continuously refine processes and explore new technologies to increase efficiency.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-20">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 Zevar.com. All Rights Reserved.</p>
+            <p class="text-sm text-gray-400 mt-2">Interactive Operational Workflow</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const phaseData = {
+                'Phase 1: Products & Content 📸': 2,
+                'Phase 2: Marketing & Engagement 📢': 3,
+                'Phase 3: Order Fulfillment 📦': 4,
+                'Phase 4: Continuous Improvement 🚀': 2
+            };
+
+            const chartCtx = document.getElementById('workflowChart').getContext('2d');
+            const workflowChart = new Chart(chartCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(phaseData),
+                    datasets: [{
+                        label: 'Operational Phases',
+                        data: Object.values(phaseData),
+                        backgroundColor: [
+                            '#EADBC8',
+                            '#DAC0A3',
+                            '#C7A17A',
+                            '#FDFBF8'
+                        ],
+                        borderColor: [
+                            '#FFFFFF',
+                            '#FFFFFF',
+                            '#FFFFFF',
+                            '#C7A17A'
+                        ],
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                             labels: {
+                                color: '#4A4A4A',
+                                font: {
+                                    size: 14,
+                                    family: "'Inter', sans-serif"
+                                }
+                            }
+                        },
+                        tooltip: {
+                             callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += context.raw + ' Step(s)';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    cutout: '60%'
+                }
+            });
+
+            const taskBreakdownCtx = document.getElementById('taskBreakdownChart').getContext('2d');
+            const taskBreakdownChart = new Chart(taskBreakdownCtx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(phaseData).map(label => {
+                        return label.length > 16 ? label.match(/.{1,16}/g).join('\n') : label;
+                    }),
+                    datasets: [{
+                        label: 'Number of Steps',
+                        data: Object.values(phaseData),
+                        backgroundColor: '#DAC0A3',
+                        borderColor: '#C7A17A',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.parsed.x;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: { display: false },
+                            ticks: { color: '#4A4A4A' }
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { color: '#4A4A4A' }
+                        }
+                    }
+                }
+            });
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section[id]');
+
+            function changeNav() {
+                let currentActiveIndex = -1;
+                // Iterate through sections to find the one currently in view
+                sections.forEach((section, index) => {
+                    if (window.scrollY + 100 >= section.offsetTop) {
+                        currentActiveIndex = index;
+                    }
+                });
+
+                // Remove active class from all links
+                navLinks.forEach(link => link.classList.remove('active'));
+
+                // Add active class to the current link
+                if (currentActiveIndex !== -1) {
+                    navLinks[currentActiveIndex].classList.add('active');
+                }
+            }
+
+            changeNav();
+            window.addEventListener('scroll', changeNav);
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

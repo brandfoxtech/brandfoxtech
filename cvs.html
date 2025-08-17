@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SATYAM K KHANNA - Laravel & Full Stack Developer</title>
+    <!-- Use the Inter font from Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap">
+    <!-- Load Tailwind CSS for modern, responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* General body styling and font family */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* The 3D canvas is fixed and behind all content */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        /* The main content container, with a semi-transparent background and blur effect */
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(17, 24, 39, 0.7); /* Semi-transparent dark background */
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            margin-top: 5vh;
+            margin-bottom: 5vh;
+            color: #E5E7EB; /* Light grey text */
+        }
+
+        /* Styling for headings */
+        h1, h2, h3 { font-weight: 700; color: #60A5FA; } /* Use a cool blue for headings */
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; }
+
+        /* Style for links and icons */
+        a {
+            color: #93C5FD; /* A lighter blue */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover { color: #fff; }
+        
+        .contact-form .submit-button {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .contact-form .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(96, 165, 250, 0.4);
+        }
+    </style>
+    <!-- Three.js library for 3D effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Phosphor Icons for a professional touch -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/dist/phosphor.js"></script>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- The 3D canvas where the magic happens -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Main CV content container -->
+    <div class="content rounded-xl p-8 md:p-12 space-y-8">
+
+        <!-- Header and Contact Information -->
+        <header class="text-center space-y-2">
+            <h1>SATYAM K KHANNA</h1>
+            <p class="text-xl text-gray-400">Laravel & Full Stack Developer</p>
+            <p class="text-sm text-gray-500">
+                <i class="ph-map-pin-line"></i> Bhartiya Nagar, Bilaspur, 495001, India <br>
+                <i class="ph-phone-call-fill"></i> Phone: +91 8878430001 | 
+                <i class="ph-envelope-fill"></i> Email: <a href="mailto:mrsatyamkhanna@gmail.com" class="text-blue-300">mrsatyamkhanna@gmail.com</a><br>
+                <i class="ph-calendar-blank-fill"></i> Date of Birth: 22-03-2003 (Akaltara) | 
+                <i class="ph-flag-fill"></i> Nationality: Indian<br>
+                <!-- Social media links with icons -->
+                <i class="ph-github-logo-fill"></i> GitHub: <a href="https://github.com/being-yash" target="_blank" class="text-blue-300">@being-yash</a> |
+                <i class="ph-linkedin-logo-fill"></i> LinkedIn: <a href="https://linkedin.com/in/mrsatyamkhanna" target="_blank" class="text-blue-300">@mrsatyamkhanna</a>
+            </p>
+        </header>
+
+        <hr class="border-t border-gray-700">
+
+        <!-- Profile Section -->
+        <section class="space-y-4">
+            <h2>Profile</h2>
+            <p>
+                A passionate and innovative web developer with 3+ years of professional experience. Strong expertise in Laravel, Node.js (Express), React, and a history of delivering robust eCommerce, CMS, and API projects. Adept at both leading and collaborating in cross-functional teams. Lifelong learner with a keen interest in data science and modern web tech. Recently secured a verbally confirmed 8% equity acquisition in Zevar.com in recognition of technical and strategic contributions.
+            </p>
+        </section>
+
+        <hr class="border-t border-gray-700">
+
+        <!-- Employment History Section -->
+        <section class="space-y-6">
+            <h2>Employment History</h2>
+            <!-- Job 1 -->
+            <div>
+                <h3 class="flex justify-between items-center text-blue-400">
+                    <span>Laravel & Full Stack Developer</span>
+                    <span class="text-sm text-gray-400">Jun 2018 – Nov 2019, Mar 2020 & Dec 2021, Jul 2024 – Present</span>
+                </h3>
+                <p class="text-sm text-gray-300">eZevar Pvt. Ltd. / Zevar Jewellery, Bilaspur</p>
+                <ul class="list-disc list-inside mt-2 space-y-1 text-gray-400">
+                    <li>Progressed from PHP Developer to Senior Full Stack Developer.</li>
+                    <li>Led Shopify and WordPress app creation, theme customizations, & custom integrations.</li>
+                    <li>Built and optimized company CRMs, eCommerce features, and payment gateway systems.</li>
+                    <li>Currently rejoined; now spearheading modernizations with Laravel, Node/Express, and React.</li>
+                    <li>Received a verbally confirmed 8% equity in Zevar.com as a recognition of ongoing value and leadership.</li>
+                </ul>
+            </div>
+            <!-- Job 2 -->
+            <div>
+                <h3 class="flex justify-between items-center text-blue-400">
+                    <span>Laravel Developer</span>
+                    <span class="text-sm text-gray-400">Aug 2023 – Jun 2024</span>
+                </h3>
+                <p class="text-sm text-gray-300">Tractorgyan (Rapsa Technologies Pvt. Ltd.), Gwalior</p>
+                <ul class="list-disc list-inside mt-2 space-y-1 text-gray-400">
+                    <li>Maintained and enhanced a large-scale CMS for tractorgyan.com.</li>
+                    <li>Introduced industry-standard Git version control, automated testing, and CI/CD deployment.</li>
+                    <li>Transformed project delivery from a messy, error-prone manual process to robust, streamlined workflows with GitHub pipelines and quality controls.</li>
+                    <li>Developed microservices and new modules (Laravel, Node.js & React).</li>
+                </ul>
+            </div>
+             <!-- Job 3 -->
+            <div>
+                <h3 class="flex justify-between items-center text-blue-400">
+                    <span>PHP Laravel Developer</span>
+                    <span class="text-sm text-gray-400">Jan 2022 – Jun 2022</span>
+                </h3>
+                <p class="text-sm text-gray-300">Softwebian Technologies, Bilaspur</p>
+                <ul class="list-disc list-inside mt-2 space-y-1 text-gray-400">
+                    <li>Lead developer for the company's new CRM and eCommerce systems.</li>
+                    <li>Implemented best practices for code quality, performance, and scalability.</li>
+                </ul>
+            </div>
+            <!-- Job 4 -->
+            <div>
+                <h3 class="flex justify-between items-center text-blue-400">
+                    <span>Laravel Developer Intern</span>
+                    <span class="text-sm text-gray-400">Mar 2022 – Aug 2022</span>
+                </h3>
+                <p class="text-sm text-gray-300">InIndia Technologies, Bangalore</p>
+                <ul class="list-disc list-inside mt-2 space-y-1 text-gray-400">
+                    <li>Supported backend teams; contributed to process automation and key integrations.</li>
+                </ul>
+            </div>
+            <!-- Job 5 -->
+            <div>
+                <h3 class="flex justify-between items-center text-blue-400">
+                    <span>Freelance Web Developer</span>
+                    <span class="text-sm text-gray-400">2018 – Present</span>
+                </h3>
+                <p class="text-sm text-gray-300">Project-based/Overlapping</p>
+                <ul class="list-disc list-inside mt-2 space-y-1 text-gray-400">
+                    <li>Delivered the Aquadiscovery Shopify site & CRM integration (AlAquatic Pvt. Ltd.).</li>
+                    <li>Developed complete order management systems & location-based ecommerce features.</li>
+                </ul>
+            </div>
+        </section>
+
+        <hr class="border-t border-gray-700">
+
+        <!-- Education Section -->
+        <section class="space-y-4">
+            <h2>Education</h2>
+            <div class="flex justify-between items-center">
+                <span>Class XII, National Open School, Raipur</span>
+                <span class="text-sm text-gray-400">Mar 2020</span>
+            </div>
+            <div class="flex justify-between items-center">
+                <span>Class X, National Open School, Raipur</span>
+                <span class="text-sm text-gray-400">Mar 2018</span>
+            </div>
+            <div class="flex justify-between items-center">
+                <span>BCA, GLA University (Distance)</span>
+                <span class="text-sm text-gray-400">2023 Ongoing</span>
+            </div>
+        </section>
+
+        <hr class="border-t border-gray-700">
+
+        <!-- Courses & Certifications Section -->
+        <section class="space-y-4">
+            <h2>Courses & Certifications</h2>
+            <div class="flex justify-between items-center">
+                <span>Node.js Bootcamp – Scaler Academy</span>
+                <span class="text-sm text-gray-400">Dec 2022 – Dec 2023</span>
+            </div>
+            <div class="flex justify-between items-center">
+                <span>Python for Data Science – Scaler Academy</span>
+                <span class="text-sm text-gray-400">Dec 2022</span>
+            </div>
+            <div class="flex justify-between items-center">
+                <span>React Ecommerce Bootcamp – Scaler Academy</span>
+                <span class="text-sm text-gray-400">Nov 2022</span>
+            </div>
+        </section>
+
+        <hr class="border-t border-gray-700">
+
+        <!-- Key Skills & Languages Section -->
+        <section class="space-y-4">
+            <h2>Key Skills</h2>
+            <div class="flex flex-wrap gap-4">
+                <span class="bg-gray-800 rounded-full px-4 py-2 text-sm">PHP</span>
+                <span class="bg-gray-800 rounded-full px-4 py-2 text-sm">JavaScript (ES6+)</span>
+                <span class="bg-gray-800 rounded-full px-4 py-2 text-sm">Python</span>
+                <span class="bg-gray-800 rounded-full px-4 py-2 text-sm">SQL</span>
+                <span class="bg-gray-800 rounded-full px-4 py-2 text-sm">Laravel</span>
+                <span class="bg-gray-800 rounded-full px-4 py-2 text-sm">Node.js/Express</span>
+                <span class="bg-gray-800 rounded-full px-4 py-2 text-sm">React</span>
+                <span class="bg-gray-800 rounded-full px-4 py-2 text-sm">jQuery</span>
+                <span class="bg-gray-800 rounded-full px-4 py-2 text-sm">Bootstrap 4</span>
+                <span class="bg-gray-800 rounded-full px-4 py-2 text-sm">Git & GitHub</span>
+                <span class="bg-gray-800 rounded-full px-4 py-2 text-sm">CI/CD</span>
+                <span class="bg-gray-800 rounded-full px-4 py-2 text-sm">MySQL</span>
+                <span class="bg-gray-800 rounded-full px-4 py-2 text-sm">REST API</span>
+            </div>
+
+            <h3 class="mt-8 text-blue-400">Languages</h3>
+            <p>
+                <span class="bg-gray-800 rounded-full px-4 py-2 text-sm">English: Professional</span>
+                <span class="bg-gray-800 rounded-full px-4 py-2 text-sm">Hindi: Native</span>
+            </p>
+        </section>
+
+        <hr class="border-t border-gray-700">
+
+        <!-- Contact Section with Form -->
+        <section class="space-y-4 contact-form">
+            <h2>Say Hello!</h2>
+            <p>I'd love to connect. Please feel free to reach out via the form below or on my social media.</p>
+            <form action="#" method="POST" class="space-y-4">
+                <div>
+                    <label for="name" class="block text-sm font-medium">Your Name</label>
+                    <input type="text" id="name" name="name" class="mt-1 block w-full rounded-md bg-gray-700 border-gray-600 text-gray-100 focus:border-blue-500 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium">Your Email</label>
+                    <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md bg-gray-700 border-gray-600 text-gray-100 focus:border-blue-500 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium">Message</label>
+                    <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md bg-gray-700 border-gray-600 text-gray-100 focus:border-blue-500 focus:ring-blue-500"></textarea>
+                </div>
+                <button type="submit" class="submit-button w-full px-4 py-2 text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Send Message
+                </button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        // --- 3D Background Setup ---
+        const canvas = document.getElementById('bg-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        // Position the camera
+        camera.position.z = 50;
+
+        // --- Create a dynamic particle field ---
+        const geometry = new THREE.BufferGeometry();
+        const vertices = [];
+        const numParticles = 2500;
+
+        for (let i = 0; i < numParticles; i++) {
+            const x = (Math.random() - 0.5) * 200;
+            const y = (Math.random() - 0.5) * 200;
+            const z = (Math.random() - 0.5) * 200;
+            vertices.push(x, y, z);
+        }
+
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+        const material = new THREE.PointsMaterial({
+            color: 0x60A5FA, /* Blue particles */
+            size: 0.2,
+            sizeAttenuation: true,
+            transparent: true,
+            opacity: 0.8,
+        });
+
+        const particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+
+        // Add a subtle ambient light
+        const ambientLight = new THREE.AmbientLight(0x444444);
+        scene.add(ambientLight);
+
+        // Add a point light to highlight some particles
+        const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+        pointLight.position.set(20, 30, 40);
+        scene.add(pointLight);
+
+        // --- User Interaction (Mouse Controls) ---
+        let isMouseDown = false;
+        let prevMouseX = 0;
+        let prevMouseY = 0;
+        
+        document.addEventListener('mousedown', (e) => {
+            isMouseDown = true;
+            prevMouseX = e.clientX;
+            prevMouseY = e.clientY;
+        });
+
+        document.addEventListener('mouseup', () => {
+            isMouseDown = false;
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isMouseDown) return;
+
+            const deltaX = e.clientX - prevMouseX;
+            const deltaY = e.clientY - prevMouseY;
+
+            const sensitivity = 0.005;
+            scene.rotation.y += deltaX * sensitivity;
+            scene.rotation.x += deltaY * sensitivity;
+
+            scene.rotation.x = Math.max(-Math.PI / 4, Math.min(Math.PI / 4, scene.rotation.x));
+
+            prevMouseX = e.clientX;
+            prevMouseY = e.clientY;
+        });
+
+        // --- Animation Loop ---
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Rotate the particle field slowly
+            particles.rotation.y += 0.0005;
+            particles.rotation.x += 0.0002;
+
+            renderer.render(scene, camera);
+        }
+
+        // --- Responsiveness ---
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Start the animation on window load
+        window.onload = function () {
+            animate();
+        };
+
+    </script>
+</body>
+</html>
