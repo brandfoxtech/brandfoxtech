@@ -1,111 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Satyam Khanna - Resume</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-  </head>
-  <body class="bg-gray-50 text-gray-800 font-sans">
-    <!-- Header -->
-    <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-8 shadow-md">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-4xl font-bold mb-2">Satyam Khanna</h1>
-        <p class="text-lg">Software Developer | Python | Laravel | JavaScript | Data Science</p>
-        <div class="mt-4 flex justify-center gap-6 text-sm">
-          <a href="mailto:satyam@example.com" class="hover:underline">📧 satyam@example.com</a>
-          <a href="https://github.com/yourgithub" class="hover:underline">💻 GitHub</a>
-          <a href="https://linkedin.com/in/yourlinkedin" class="hover:underline">🔗 LinkedIn</a>
-        </div>
-      </div>
-    </header>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Satyam Khanna - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.7/dist/countUp.umd.js"></script>
+  <style>
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-500">
 
-    <!-- About -->
-    <section class="max-w-4xl mx-auto py-10 px-4">
-      <h2 class="text-2xl font-semibold mb-4 border-b pb-2">About Me</h2>
-      <p class="leading-relaxed text-gray-700">
-        Passionate software developer with hands-on experience in building modern
-        web applications. Skilled in Python, Laravel, JavaScript, and Data
-        Science. I love solving problems, learning new technologies, and
-        creating impactful solutions.
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center p-5 sticky top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-md">
+    <h1 class="text-xl font-bold">Satyam.dev</h1>
+    <div class="flex items-center gap-4">
+      <button id="darkToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+        <i data-lucide="moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="min-h-[80vh] flex flex-col md:flex-row items-center justify-center px-8">
+    <div class="flex-1 text-center md:text-left">
+      <h2 class="text-4xl md:text-6xl font-extrabold leading-tight">
+        Hi, I’m <span class="text-blue-500">Satyam</span> 👋
+      </h2>
+      <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+        Software Developer | Shopify Apps | React | Node | Laravel
       </p>
-    </section>
+      <button class="mt-6 px-6 py-3 bg-blue-600 text-white rounded-xl shadow hover:scale-105 transition flex items-center gap-2 mx-auto md:mx-0">
+        <i data-lucide="download"></i> Download CV
+      </button>
+    </div>
+    <div class="flex-1 mt-10 md:mt-0">
+      <img src="https://illustrations.popsy.co/gray/online-community.svg" alt="Hero Illustration" class="w-96 mx-auto">
+    </div>
+  </section>
 
-    <!-- Skills -->
-    <section class="max-w-4xl mx-auto py-10 px-4">
-      <h2 class="text-2xl font-semibold mb-6 border-b pb-2">Skills</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="bg-white shadow rounded-xl p-4 text-center">Python</div>
-        <div class="bg-white shadow rounded-xl p-4 text-center">Laravel</div>
-        <div class="bg-white shadow rounded-xl p-4 text-center">JavaScript</div>
-        <div class="bg-white shadow rounded-xl p-4 text-center">React</div>
-        <div class="bg-white shadow rounded-xl p-4 text-center">Node.js</div>
-        <div class="bg-white shadow rounded-xl p-4 text-center">Data Science</div>
-        <div class="bg-white shadow rounded-xl p-4 text-center">SQL</div>
-        <div class="bg-white shadow rounded-xl p-4 text-center">APIs</div>
+  <!-- Stats Section -->
+  <section class="py-16 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-center">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div>
+        <h3 id="years" class="text-4xl font-bold">0</h3>
+        <p>Years of Coding</p>
       </div>
-    </section>
+      <div>
+        <h3 id="projects" class="text-4xl font-bold">0</h3>
+        <p>Projects Delivered</p>
+      </div>
+      <div>
+        <h3 id="clients" class="text-4xl font-bold">0</h3>
+        <p>Clients Served</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Work Experience Timeline -->
-    <section class="max-w-4xl mx-auto py-10 px-4">
-      <h2 class="text-2xl font-semibold mb-6 border-b pb-2">Work Experience</h2>
-      <div class="relative border-l border-gray-300 pl-6">
-        <!-- Item 1 -->
-        <div class="mb-10 relative">
-          <span class="absolute -left-3 flex items-center justify-center w-6 h-6 bg-indigo-600 text-white rounded-full">
-            <i data-lucide="briefcase" class="w-4 h-4"></i>
-          </span>
-          <div class="bg-white p-4 shadow rounded-xl">
-            <h3 class="font-bold">Software Developer @ BrandFox</h3>
-            <span class="text-sm text-gray-500">2023 - Present</span>
-            <p class="mt-2 text-gray-700 text-sm">
-              Building Shopify apps, vendor systems, and scalable web solutions
-              using React, Node.js, Laravel, and MongoDB.
-            </p>
-          </div>
-        </div>
-        <!-- Item 2 -->
-        <div class="mb-10 relative">
-          <span class="absolute -left-3 flex items-center justify-center w-6 h-6 bg-purple-600 text-white rounded-full">
-            <i data-lucide="code" class="w-4 h-4"></i>
-          </span>
-          <div class="bg-white p-4 shadow rounded-xl">
-            <h3 class="font-bold">Freelance Developer</h3>
-            <span class="text-sm text-gray-500">2021 - 2023</span>
-            <p class="mt-2 text-gray-700 text-sm">
-              Worked on full-stack projects with clients worldwide. Specialized
-              in ecommerce solutions, APIs, and data-driven apps.
-            </p>
-          </div>
-        </div>
-        <!-- Item 3 -->
-        <div class="relative">
-          <span class="absolute -left-3 flex items-center justify-center w-6 h-6 bg-green-600 text-white rounded-full">
-            <i data-lucide="graduation-cap" class="w-4 h-4"></i>
-          </span>
-          <div class="bg-white p-4 shadow rounded-xl">
-            <h3 class="font-bold">B.Tech in Computer Science</h3>
-            <span class="text-sm text-gray-500">2017 - 2021</span>
-            <p class="mt-2 text-gray-700 text-sm">
-              Graduated with a strong foundation in software development,
-              algorithms, and data science.
-            </p>
-          </div>
+  <!-- Skills Section -->
+  <section class="py-16 px-8 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold mb-8 text-center">💡 My Skills</h2>
+    <canvas id="skillsChart" class="max-w-lg mx-auto"></canvas>
+  </section>
+
+  <!-- Timeline -->
+  <section class="py-16 px-8 max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold mb-8 text-center">📈 Career Timeline</h2>
+    <div class="space-y-8 relative border-l-2 border-blue-500">
+      <div class="ml-6">
+        <div class="glass p-4 rounded-xl shadow-md">
+          <h3 class="font-semibold">2020 - Started Coding 👨‍💻</h3>
+          <p>Began journey in Python & web development.</p>
         </div>
       </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-6 mt-10">
-      <div class="max-w-4xl mx-auto text-center">
-        <p>&copy; 2025 Satyam Khanna. All rights reserved.</p>
+      <div class="ml-6">
+        <div class="glass p-4 rounded-xl shadow-md">
+          <h3 class="font-semibold">2022 - BrandFox 🚀</h3>
+          <p>Launched software & marketing company.</p>
+        </div>
       </div>
-    </footer>
+      <div class="ml-6">
+        <div class="glass p-4 rounded-xl shadow-md">
+          <h3 class="font-semibold">2024 - Shopify App Dev 🛒</h3>
+          <p>Built multi-vendor & wholesale pricing apps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Init Lucide -->
-    <script>
-      lucide.createIcons();
-    </script>
-  </body>
+  <!-- Contact Form -->
+  <section class="py-16 px-8 max-w-3xl mx-auto">
+    <h2 class="text-3xl font-bold mb-8 text-center">📩 Get in Touch</h2>
+    <form id="contactForm" class="space-y-4 glass p-6 rounded-xl shadow-md">
+      <input type="text" placeholder="Your Name" name="name" required class="w-full p-3 rounded bg-white/70 dark:bg-gray-800/70">
+      <input type="email" placeholder="Your Email" name="email" required class="w-full p-3 rounded bg-white/70 dark:bg-gray-800/70">
+      <textarea placeholder="Message" name="message" required class="w-full p-3 rounded bg-white/70 dark:bg-gray-800/70"></textarea>
+      <button type="submit" class="w-full bg-blue-600 py-3 rounded-xl text-white font-bold hover:scale-105 transition">
+        Send Message 🚀
+      </button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 bg-gray-200 dark:bg-gray-800">
+    <p>© 2025 Satyam Khanna. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Icons
+    lucide.createIcons();
+
+    // Dark Mode
+    const toggle = document.getElementById("darkToggle");
+    toggle.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+    });
+
+    // Counters
+    const years = new CountUp.CountUp('years', 3);
+    const projects = new CountUp.CountUp('projects', 20);
+    const clients = new CountUp.CountUp('clients', 5);
+    years.start(); projects.start(); clients.start();
+
+    // Skills Chart
+    new Chart(document.getElementById("skillsChart"), {
+      type: "radar",
+      data: {
+        labels: ["React", "Node.js", "Python", "Laravel", "Shopify"],
+        datasets: [{
+          label: "Skill Level",
+          data: [90, 85, 80, 75, 88],
+          backgroundColor: "rgba(37, 99, 235, 0.4)",
+          borderColor: "rgb(37, 99, 235)",
+          borderWidth: 2
+        }]
+      }
+    });
+
+    // Contact Form EmailJS (replace with your EmailJS keys)
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      alert("Message sent! (Integrate EmailJS for real sending)");
+    });
+  </script>
+</body>
 </html>
